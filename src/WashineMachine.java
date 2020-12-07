@@ -1,68 +1,56 @@
-public class WashineMachine
-{
-    //Private Variables
-    private int X;
-    private int Y;
-    private int W;
-    private String Marka;
-    private String Modelo;
-    private static final String TYPOS = "WASHINE MACHINE";
-    private String Energeia;
 
+class WashineMachine extends Device
+{
+
+    //Private Variables
+    private String TYPE;
     private int strofes;
     private String xrwma;
     private int programmata;
     private int xwritikotita;
-    private int timi;
+
     // Counter Variable
     static int WashingsCounter=0;
 
         // Main Constructor
-        public WashineMachine(int Mikos,int Ypsos,int Vathos, String Company, String Modell,String Energy_Class,int Xwros, String Color,int Programms,int Strofes_Ana_Sec,int price)
+        public WashineMachine(String TYPE, int Xwros, String Color,int Programms,int Strofes_Ana_Sec,int Mikos, int Ypsos,int Vathos,String Company,String Modelo, int Timi,String Energy_Class)
         {
-            X = Mikos; Y = Ypsos; W=Vathos; Marka =Company; Modelo=Modell; Energeia=Energy_Class; programmata=Programms; xwritikotita=Xwros; xrwma=Color;
-            strofes = Strofes_Ana_Sec; timi=price;
-            // Counter
-            { WashingsCounter +=1;}
+        super(Mikos,Ypsos,Vathos,Company,Modelo,Timi,Energy_Class);
+        this.TYPE =TYPE; this.programmata=Programms; this.xwritikotita=Xwros; this.xrwma=Color; this.strofes = Strofes_Ana_Sec;
+
+        // Counter
+        { WashingsCounter +=1;}
         }
         //Synartisi Ektypwsis Constructors
         public void PrintWashings()
         {
-            System.out.println(TYPOS);
-            System.out.println("Tis Etairias :"+Marka+" - To Modelo: "+Modelo);
-            System.out.println("Exei Diastaseis(cm0: "+"Mikos: "+X+" X Ypsos: "+Y+" X Vathos: "+W);
-            System.out.println("H energeiaki tou Klasi einai :"+Energeia+" - Programmata :"+programmata+" - Strofes kadou :"+strofes);
-            System.out.println("Xrwnatos :"+xrwma+ " - Xwritikotita :"+xwritikotita+"Lt");
-            System.out.println("Timi :"+timi+" Euros");
-            System.out.println("");
+        System.out.println("Device Type : "+getTYPE());
+        System.out.println("Programms : "+getprogrammata()+" - RPM :  "+getstrofes());
+        System.out.println("Color : "+getXrwma()+ " - Capasity :  "+getXwritikotita()+"Lt");
+        System.out.println("Lenght :  "+getMikos()+ "|| Height : "+ getYpsos() + "|| Depth : "+getVathos());
+        System.out.println("Company : "+getCompany()+ "|| Modell : "+getModelo()+ "|| Energy Class : "+ getEnergeia());
+        System.out.println("Price : "+getTimi()+"Euros");
+        System.out.println("");
         }
 
         //Synartisi Ektypwsis Counter
-        public static void Washings(){System.out.println("WASHINE MACHINE : "+WashineMachine.WashingsCounter);}
-        //Spare Synartisi
-        private void periodicMantainance(){}
-        //Getters
-        public int getMikos(){return X;}
-        public int getYpsos(){return Y;}
-        public int getVathos(){return W;}
-        public String getMarka(){return Marka;}
-        public String getModelo(){return Modelo;}
+        public static void Counter(){System.out.println("WASHINE MACHINE : "+WashineMachine.WashingsCounter);}
+
+    //Private Getters
+
         public String getXrwma(){return xrwma;}
         public int getXwritikotita(){return xwritikotita;}
         public int getprogrammata(){return programmata;}
         public int getstrofes(){return strofes;}
-        public int  getTimi(){return timi;}
-        public String getEnergeia(){return Energeia;}
-        //Setters
-        public void setMikos(int Mikos){X = Mikos;}
-        public void setYpsos(int Ypsos){Y = Ypsos;}
-        public void setVathos(int Vathos){W = Vathos;}
-        public void setMarka(String Company){ Marka = Company;}
-        public void setModelo(String Modell){Modelo = Modell;}
+        public String getTYPE() { return TYPE;}
+
+
+        //Private Setters
         public void setXrwma(String Xrwma){xrwma = Xrwma;}
         public void setXwritikotita(int Xwros){xwritikotita = Xwros;}
         public void setstrofes(int Strofes_Ana_Sec){strofes= Strofes_Ana_Sec;}
         public void setProgrammata(int programms){programmata = programms;}
-        public void setTimi(int price){timi = price;}
-        public void setEnergeia(String Energy){Energeia = Energy;}
+        public void setTYPE(String newTYPE) {
+        TYPE = newTYPE;
+    }
 }

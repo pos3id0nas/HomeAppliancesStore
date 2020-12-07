@@ -1,68 +1,56 @@
-public class Oven
-{
-    //Private Variables
-    private int X;
-    private int Y;
-    private int W;
-    private String Marka;
-    private String Modelo;
-    private static final String TYPOS = "OVEN";
-    private String Energeia;
 
+class Oven extends Device
+{
+
+    //Private Variables
+    private String TYPE;
     private int xwritikotita;
-    private String xrwma;
+    private String Color;
     private int programmata;
     private String kausimo;
-    private int timi;
+
+
     // Counter Variable
     public static int OvensCounter = 0;
         // Main Constructor
-        public Oven(int Mikos,int Ypsos,int Vathos, String Company, String Modell,String Energy_Class,int Xwros, String Colour,int Programms,String Eidos_Kausimou,int Price)
+        public Oven(String TYPE, int Xwros, String Color,int Programms,String Eidos_Kausimou,int Mikos, int Ypsos,int Vathos,String Company,String Modelo, int Timi,String Energy_Class)
         {
-        X = Mikos; Y = Ypsos; W=Vathos; Marka =Company; Modelo=Modell; Energeia=Energy_Class; programmata=Programms; xwritikotita=Xwros; xrwma=Colour;
-        kausimo = Eidos_Kausimou; timi=Price;
+
+        super(Mikos,Ypsos,Vathos,Company,Modelo,Timi,Energy_Class);
+        this.TYPE = TYPE; this.programmata=Programms; this.xwritikotita=Xwros; this.Color=Color; this.kausimo = Eidos_Kausimou;
+
         // Counter
         {OvensCounter +=1;}
         }
         // Synartisi Ektypwsis Constructors
         public void PrintOvens()
         {
-        System.out.println(TYPOS);
-        System.out.println("Tis Etairias :"+Marka+" To Modelo: "+Modelo);
-        System.out.println("Exei Diastaseis(cm): "+"Mikos: "+X+" X Ypsos: "+Y+" X Vathos: "+W);
-        System.out.println("H energeiaki tou Klasi einai :"+Energeia+" Programmata :"+programmata+" Typou :"+kausimo);
-        System.out.println("Xrwnatos :"+xrwma+ "Xwritikotita :"+xwritikotita+"Lt");
-        System.out.println("Timi :"+timi+" Euros");
+        System.out.println("Device Type : "+getTYPE());
+        System.out.println("Programms : "+getProgrammata()+" Energy Type : "+getKausimo());
+        System.out.println("Color :%s "+getColor()+ "Capasity : "+getXwritikotita()+"Lt");
+        System.out.println("Lenght : "+getMikos()+ "|| Height : "+ getYpsos() + "|| Depth : "+getVathos());
+        System.out.println("Company : "+getCompany()+ "|| Modell : "+getModelo()+ "|| Energy Class : "+ getEnergeia());
+        System.out.println("Price : "+getTimi()+"Euros");
         System.out.println("");
 
         }
         // Synartisi Ektypwsis Counter
-        public static void Ovens(){System.out.println("OVEN : "+Oven.OvensCounter);}
-        // Spare Synartisi
-        private void periodicMantainance(){}
-        // Getters
-        public int getMikos(){return X;}
-        public int getYpsos(){return Y;}
-        public int getVathos(){return W;}
-        public String getMarka(){return Marka;}
-        public String getModelo(){return Modelo;}
-        public String getTypos(){return TYPOS;}
-        public String getXrwma(){return xrwma;}
+        public static void Counter(){System.out.println("OVEN : "+Oven.OvensCounter);}
+
+        //Private Getters
+        public String getColor(){return Color;}
         public int getXwritikotita(){return xwritikotita;}
         public String getKausimo(){return kausimo;}
         public int getProgrammata(){return programmata;}
-        public int  getTimi(){return timi;}
-        public String getEnergeia(){return Energeia;}
-        // Setters
-        public void setMikos(int Mikos){X = Mikos;}
-        public void setYpsos(int Ypsos){Y = Ypsos;}
-        public void setVathos(int Vathos){W = Vathos;}
-        public void setMarka(String Company){ Marka = Company;}
-        public void setModelo(String Modell){Modelo = Modell;}
-        public void setXrwma(String Xrwma){xrwma = Xrwma;}
+        public String getTYPE() { return TYPE;}
+
+
+        //Private Setters
+        public void setColor(String Color){Color = Color;}
         public void setXwritikotita(int Xwros){xwritikotita = Xwros;}
         public void setEidos_Kausimou(String Eidos_Kausimou){kausimo = Eidos_Kausimou;}
         public void setkatapsixti(int programms){programmata = programms;}
-        public void setTimi(int price){timi = price;}
-        public void setEnergeia(String Energy){Energeia = Energy;}
+        public void setTYPE(String newTYPE) {
+        TYPE = newTYPE;
+    }
 }
