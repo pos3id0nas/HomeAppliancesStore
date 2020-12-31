@@ -1,56 +1,103 @@
+import java.util.Scanner;
 
 class Oven extends Device
 {
 
     //Private Variables
-    private String TYPE;
-    private int xwritikotita;
+    private final String TYPE = "Oven";
+    private int Capasity;
     private String Color;
-    private int programmata;
+    private int Programms;
     private String kausimo;
 
 
     // Counter Variable
     public static int OvensCounter = 0;
         // Main Constructor
-        public Oven(String TYPE, int Xwros, String Color,int Programms,String Eidos_Kausimou,int Mikos, int Ypsos,int Vathos,String Company,String Modelo, int Timi,String Energy_Class)
+        public Oven(String TYPE, int Capasity, String Color,int Programms,String Eidos_Kausimou,int Mikos, int Ypsos,int Vathos,String Company,String Modelo, int Price,String Energy_Class)
         {
 
-        super(Mikos,Ypsos,Vathos,Company,Modelo,Timi,Energy_Class);
-        this.TYPE = TYPE; this.programmata=Programms; this.xwritikotita=Xwros; this.Color=Color; this.kausimo = Eidos_Kausimou;
+        super(Mikos,Ypsos,Vathos,Company,Modelo,Price,Energy_Class);
+        this.Programms=Programms; this.Capasity=Capasity; this.Color=Color; this.kausimo = Eidos_Kausimou;
 
         // Counter
         {OvensCounter +=1;}
         }
+
+    //Default Constructor
+    public Oven()
+    {
+        super();
+        // Counter
+        {OvensCounter +=1;}
+    }
+
+    //Diadikasia Kataskeuis Constructor Apo Keyboard Input
+    public void NewOvenConstruct(Scanner input)
+    {
+        System.out.println("Please Enter The Following Informations");
+        Scanner Input = new Scanner(System.in);
+        System.out.println("BTUs :");
+        int Capasity = Integer.parseInt(Input.nextLine());
+        setCapasity(Capasity);
+        System.out.println("Number Of Programms :");
+        int Programms= Integer.parseInt(Input.nextLine());
+        setProgramms(Programms);
+        System.out.println("Color ?:");
+        String Color= Input.nextLine();
+        setColor(Color);
+        System.out.println("Energy Type ?:");
+        String Eidos_Kausimou= Input.nextLine();
+        setEidos_Kausimou(Eidos_Kausimou);
+        System.out.println("Lenght :");
+        int Mikos = Integer.parseInt(Input.nextLine());
+        setMikos(Mikos);
+        System.out.println("Height :");
+        int Ypsos = Integer.parseInt(Input.nextLine());
+        setYpsos(Ypsos);
+        System.out.println("Depth :");
+        int Vathos = Integer.parseInt(Input.nextLine());
+        setVathos(Vathos);
+        System.out.println("Company ?:");
+        String Company = Input.nextLine();
+        setCompany(Company);
+        System.out.println("Model Code:");
+        String Modelo = Input.nextLine();
+        setModelo(Modelo);
+        System.out.println("Energy_Class ?:");
+        String Energy_Class = Input.nextLine();
+        setEnergeia(Energy_Class);
+        System.out.println("Price :");
+        int Price = Integer.parseInt(Input.nextLine());
+        setPrice(Price);
+    }
         // Synartisi Ektypwsis Constructors
         public void PrintOvens()
         {
-        System.out.println("Device Type : "+getTYPE());
-        System.out.println("Programms : "+getProgrammata()+" Energy Type : "+getKausimo());
-        System.out.println("Color :%s "+getColor()+ "Capasity : "+getXwritikotita()+"Lt");
-        System.out.println("Lenght : "+getMikos()+ "|| Height : "+ getYpsos() + "|| Depth : "+getVathos());
-        System.out.println("Company : "+getCompany()+ "|| Modell : "+getModelo()+ "|| Energy Class : "+ getEnergeia());
-        System.out.println("Price : "+getTimi()+"Euros");
-        System.out.println("");
+        System.out.println("Device Type : "+TYPE);
+        System.out.println("Programms : "+getProgramms()+" || Energy Type : "+getKausimo());
+        System.out.println("Color : "+getColor()+ " Capasity : "+getCapasity()+"Lt");
+        System.out.println("Lenght : "+getMikos()+ " || Height : "+ getYpsos() + " || Depth : "+getVathos());
+        System.out.println("Company : "+getCompany()+ " || Modell : "+getModelo()+ " || Energy Class : "+ getEnergeia());
+        System.out.println("Price : "+getPrice()+"Euros");
+        System.out.println("\n");
 
         }
         // Synartisi Ektypwsis Counter
-        public static void Counter(){System.out.println("OVEN : "+Oven.OvensCounter);}
+        public static void Counter(){System.out.println("THE OVENS ARE : "+Oven.OvensCounter);}
 
         //Private Getters
         public String getColor(){return Color;}
-        public int getXwritikotita(){return xwritikotita;}
+        public int getCapasity(){return Capasity;}
         public String getKausimo(){return kausimo;}
-        public int getProgrammata(){return programmata;}
-        public String getTYPE() { return TYPE;}
+        public int getProgramms(){return Programms;}
+        //public String getTYPE() { return TYPE;}
 
 
         //Private Setters
         public void setColor(String Color){Color = Color;}
-        public void setXwritikotita(int Xwros){xwritikotita = Xwros;}
+        public void setCapasity(int Capasity){Capasity = Capasity;}
         public void setEidos_Kausimou(String Eidos_Kausimou){kausimo = Eidos_Kausimou;}
-        public void setkatapsixti(int programms){programmata = programms;}
-        public void setTYPE(String newTYPE) {
-        TYPE = newTYPE;
-    }
+        public void setProgramms(int programms){Programms = Programms;}
+        //public void setTYPE(String newTYPE) {TYPE = newTYPE;}
 }
