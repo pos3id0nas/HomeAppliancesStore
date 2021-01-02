@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Oven extends Device
+class Oven extends Device  implements java.io.Serializable
 {
 
     //Private Variables

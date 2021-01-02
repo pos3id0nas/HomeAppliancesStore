@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class AirCondition extends Device
+class AirCondition extends Device  implements java.io.Serializable
 {
     //Private Variables
     private final String TYPE = "AirCondition";

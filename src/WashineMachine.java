@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class WashineMachine extends Device
+class WashineMachine extends Device  implements java.io.Serializable
 {
 
     //Private Variables
@@ -14,7 +14,7 @@ class WashineMachine extends Device
     static int WashingsCounter=0;
 
         // Main Constructor
-        public WashineMachine(String TYPE, int Capasity, String Color,int Programms,int Strofes_Ana_Sec,int Mikos, int Ypsos,int Vathos,String Company,String Modelo, int Price,String Energy_Class)
+        public WashineMachine(String TYPE, int Capasity,int Programms,String Color,int Strofes_Ana_Sec,int Mikos, int Ypsos,int Vathos,String Company,String Modelo,String Energy_Class, int Price)
         {
         super(Mikos,Ypsos,Vathos,Company,Modelo,Price,Energy_Class);
         this.Programms=Programms; this.Capasity=Capasity; this.Color=Color; this.strofes = Strofes_Ana_Sec;
@@ -36,7 +36,7 @@ class WashineMachine extends Device
     {
         System.out.println("Please Enter The Following Informations");
         Scanner Input = new Scanner(System.in);
-        System.out.println("BTUs :");
+        System.out.println("Capasity :");
         int Capasity = Integer.parseInt(Input.nextLine());
         setCapasity(Capasity);
         System.out.println("Number Of Programms :");

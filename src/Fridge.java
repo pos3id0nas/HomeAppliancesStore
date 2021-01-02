@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Fridge extends Device
+class Fridge extends Device  implements java.io.Serializable
 {
 
     //boolean state = false;
