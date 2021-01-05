@@ -1,3 +1,6 @@
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 class Oven extends Device  implements java.io.Serializable
@@ -37,7 +40,7 @@ class Oven extends Device  implements java.io.Serializable
     {
         System.out.println("Please Enter The Following Informations");
         Scanner Input = new Scanner(System.in);
-        System.out.println("BTUs :");
+        System.out.println("Capasity :");
         int Capasity = Integer.parseInt(Input.nextLine());
         setCapasity(Capasity);
         System.out.println("Number Of Programms :");
@@ -83,6 +86,27 @@ class Oven extends Device  implements java.io.Serializable
         System.out.println("\n");
 
         }
+
+
+        //Synartisi Ektypwsis Constructors Se ARXEIO
+        public void FileWriteO()
+        {
+            try{
+                PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("Objects.txt", true)));
+                writer.print("Device Type : "+TYPE);
+                writer.print("|| BTU's : " + getCapasity() + "Lt || Programms : " + getProgramms() );
+                writer.print("|| Color : " + getColor() + " || Energy TYpe : " + getKausimo());
+                writer.print("|| Lenght :  " + getMikos() + "|| Height : " + getYpsos() + "|| Depth : " + getVathos());
+                writer.print("|| Company : " + getCompany() + "|| Modell : " + getModelo() + "|| Energy Class : " + getEnergeia());
+                writer.print("|| Price : " + getPrice() + "Euros");
+                writer.print("\n");
+                writer.close();
+                System.out.println("FILE WRITE DONE!!\n");
+
+            }
+            catch (Exception e) {System.out.println("FILE WRITE ERROR!!\n"); }
+        }
+
         // Synartisi Ektypwsis Counter
         public static void Counter(){System.out.println("THE OVENS ARE : "+Oven.OvensCounter);}
 

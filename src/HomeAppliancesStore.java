@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Arrays;
 
 
 public class HomeAppliancesStore {
@@ -50,7 +51,7 @@ public class HomeAppliancesStore {
             //Dhmiourgia Constructors Stin Main Kai ektypwsh Meta Apo Ka8e Dhmioyrgia
 
 
-            Fridge PITSOS = new Fridge(300, "Black", "YES", "YES", 100, 200, 50, "PITSOS", "P56THJ0", 500, "AAAA");
+            Fridge PITSOS = new Fridge("FRIDGE",300, "Black", "YES", "YES", 100, 200, 50, "PITSOS", "P56THJ0", 500, "AAAA");
             PITSOS.PrintFridges();
 
             Oven PHILIPS = new Oven("OVEN", 40, "SILVER", 20, "ELECTRICITY", 50, 120, 60, "PHILIPS", "PH886G", 350, "AAA");
@@ -87,6 +88,7 @@ public class HomeAppliancesStore {
             AirCondition.Counter();
 
             System.out.println("----------------------------------------------------------------");
+            CreateFile();
             Read_File();
 
         } catch (Exception e) {
@@ -117,7 +119,7 @@ public class HomeAppliancesStore {
                 FileReader Devices = new FileReader(Dfile);
                 BufferedReader br = new BufferedReader(Devices);
                 System.out.println("__________________________DEVICE INPUT__________________________");
-                //Diavazei EidosSyskeyis (Gia Eukolia exei kai epiloges alla kai eleuthero input)
+                //Diavazei Eidos Syskeyis (eleuthero input)
                 System.out.println("Type The Device That You Are Looking For :");
                 Scanner Dev = new Scanner(System.in);
                 String Device = Dev.nextLine();
@@ -129,233 +131,176 @@ public class HomeAppliancesStore {
                     String line;
                     if (Device.equals("fridge"))                                                                        //An i syskeui einai Fridge klp stis paromoies else if
                     {
-                        char[] FridgeARR = new char[0];
-                        while ((line = br.readLine()) != null)                                                          //Diavazei grammi grammi to arxeio mexri......
-                        {
-                            line = line.toLowerCase();                                                                  //Mia metatropi olwn twn grammwn se mikra...
-                            if (line.contains(Device))                                                                  //Mexri tin grammi pou tha exei tin lexi poy psaxnoume
-                            {
-                                String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);        //Gia aisthitikous logous kanoume to prwto gramma kefalaio
-                                FridgeARR = line.toCharArray();                                                         //Oli I Grammi Se Enan Pinaka Xaraktirwn
-                                System.out.println("The File Contains : " + FridgeARR[7] + " " + PrintDevice + "s");    //Ektypwnoyme
-                            }
-                        }
-                        int num = Character.getNumericValue(FridgeARR[7]);                                              //Metatropi Char se Int
-                        Fridge[] FridgeObjects;                                                                           //Dilwsi Pinaka Constructors
-                        FridgeObjects = new Fridge[num];                                                                   //Dilwsi Megethous
-                        boolean construct = true;
-                        while (construct)                                                                               //Elegxos Exodou apo epiloges
-                        {
-                            int k;
-                            for (k = 1; k <= num; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
-                            {
-                                int i = k - 1;
-                                System.out.println("Build Constructors (1) - Leave Constructor Default (2) - Exit (3):");
-                                Scanner Constr = new Scanner(System.in);
-                                String ConstructorBuild = Constr.nextLine();
-                                if (ConstructorBuild.equals("1")) {
-                                    Scanner Input = new Scanner(System.in);
-                                    Fridge NewFridge = new Fridge();                                                    //Dimiourgia Constructor
-                                    NewFridge.NewFridgeConstruct(Input);                                                //Dimiourgia meso synartisis eisodou
-                                    for (int j = 0; j < FridgeObjects.length; j++) {
-                                        FridgeObjects[i] = NewFridge;                                                    //Eisagwgi Stoixeiwn se pinaka
-                                    }
-                                } else if (ConstructorBuild.equals("2")) {
-                                    FridgeObjects[i] = new Fridge();                                                    //Dimiourgia Default Constructor
-                                } else {
-                                    construct = false;                                                                  //Exodos apo Epilogi
-                                    break;
-                                }
-                                System.out.println("FRIDGE No " + k);                                                   //Metritis entos loopas
-                                //-----------------------------------WRITE OBJECT FILE----------------------------------
-
-                                try {
-                                    FileOutputStream Output = new FileOutputStream("Objects.txt");
-                                    ObjectOutputStream out = new ObjectOutputStream(Output);
-                                    out.writeObject(FridgeObjects);
-                                    out.close();
-                                    Output.close();
-                                }
-                                catch (Exception e)
-                                {
-                                    System.out.println("WRITE FILE ERROR!!");
-                                }
-
-                                FridgeObjects[i].PrintFridges();                                                        //Synartisi ektypwsis
-
-                            }
-                            Fridge.Counter();
-                            construct = false;                                                                          //Exodos apo Oloklirwsi Constructors
-                        }
-                    } else if (Device.equals("oven")) {
-                        char[] OvenARR = new char[0];
+                        String[] FridgeARR = new String[0];
                         while ((line = br.readLine()) != null) {
                             line = line.toLowerCase();
+                            FridgeARR = line.split(" ");
+
                             if (line.contains(Device)) {
                                 String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);
-                                OvenARR = line.toCharArray();
-                                System.out.println("The File Contains : " + OvenARR[5] + " " + PrintDevice + "s");
+                                System.out.println("The File Contains : " + FridgeARR[1] + " " + PrintDevice + "s");
                             }
                         }
-                        int num = Character.getNumericValue(OvenARR[5]);                                                //Metatropi Char se Int
-                        Oven[] OvenObjects;
-                        OvenObjects = new Oven[num];                                                                    //Pinakas Constructor
+                        int fr = Integer.parseInt(FridgeARR[1]);
                         boolean construct = true;
                         while (construct)                                                                               //Elegxos Exodou apo epiloges
                         {
                             int k;
-                            for (k = 1; k <= num; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
+                                for (k = 1; k <= fr; k++)                                                              //For loop gia epanalipsi oswn Object Grafei to arxeio
+                                {
+                                    int i = k - 1;
+                                    System.out.println("\nBuild Constructors (1) - Leave Constructor Default (2) - Exit (3):");
+                                    Scanner Constr = new Scanner(System.in);
+                                    String ConstructorBuild = Constr.next();
+                                    Fridge[] NewFridge = new Fridge[12];
+                                    if (ConstructorBuild.equals("1")) {
+                                        Scanner Input = new Scanner(System.in);
+                                        NewFridge[i] = new Fridge();
+                                        NewFridge[i].NewFridgeConstruct(Input);
+                                    } else if (ConstructorBuild.equals("2")) {
+                                        NewFridge[i] = new Fridge();                                                    //Eisagwgi Stoixeiwn se pinaka
+                                    } else {
+                                        break;
+                                    }                                                                                   //Exodos apo Epilogi
+
+                                    System.out.println("\nFRIDGE No " + k);                                             //Metritis entos loopas
+                                    NewFridge[i].PrintFridges();                                                        //Synartisi Ektipwsis apo dedomena pinaka}
+                                    //-----------------------------------WRITE OBJECT FILE----------------------------------
+                                    NewFridge[i].FileWriteF();                                                          //Synartisi Eggrafis se Arxeio
+                                }
+                                Fridge.Counter();
+                                construct = false;                                                                      //Exodos apo Oloklirwsi Constructors
+                            }
+                        }
+                        else if (Device.equals("oven")) {
+                        String[] OvenARR = new String[0];                                                               //Diavazei to arxeio <<Devices>> grammi grammi
+                        while ((line = br.readLine()) != null) {                                                        //tis opoies metatrepei oles se mikra se periptwsi pou yparxei kati kefalaio
+                            line = line.toLowerCase();                                                                  //Kai Pernaei tin grammi xwrismeni se kena ---> sto antistoixo String Array kathe string
+                            OvenARR = line.split(" ");
+                            if (line.contains(Device)) {                                                                //Kai elegxei An i grammi periexei tin Syskeui pou psaxnoume
+                                String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);
+                                System.out.println("The File Contains : " + OvenARR[1] + " " + PrintDevice + "s");
+                            }
+                        }
+                        int ov = Integer.parseInt(OvenARR[1]);
+                        boolean construct = true;
+                        while (construct)                                                                               //Elegxos Exodou apo epiloges
+                        {
+                            int k;
+                            for (k = 1; k <= ov; k++)                                                                  //For loop gia epanalipsi oswn Object tha Grafoun sto arxeio
                             {
                                 int i = k - 1;
-                                System.out.println("Build Constructors (1) - Leave Constructor Default (2) - Exit (3):");
+                                System.out.println("\nBuild Constructors (1) - Leave Constructor Default (2) - Exit (3):");
                                 Scanner Constr = new Scanner(System.in);
-                                String ConstructorBuild = Constr.nextLine();
-                                if (ConstructorBuild.equals("1")) {
+                                String ConstructorBuild = Constr.next();
+                                Oven[] NewOven = new Oven[12];
+                                if (ConstructorBuild.equals("1")) {                                                     //Epilogi Stoiseiwn Xeirokinita
                                     Scanner Input = new Scanner(System.in);
-                                    Oven NewOven = new Oven();                                                          //Dimiourgia Constructor
-                                    NewOven.NewOvenConstruct(Input);                                                    //Dimiourgia meso synartisis eisodou
-                                    for (int j = 0; j < OvenObjects.length; j++) {
-                                        OvenObjects[i] = NewOven;                                                       //Eisagwgi Stoixeiwn se pinaka
-                                    }
+                                    NewOven[i] = new Oven();
+                                    NewOven[i].NewOvenConstruct(Input);
                                 } else if (ConstructorBuild.equals("2")) {
-                                    OvenObjects[i] = new Oven();                                                          //Dimiourgia Constructor
+                                    NewOven[i] = new Oven();                                                            //Eisagwgi Stoixeiwn Default
                                 } else {
-                                    construct = false;                                                                  //Exodos apo Epilogi
                                     break;
-                                }
-                                System.out.println("OVEN No " + k);                                                     //Metritis entos loopas
-                                //-----------------------------------WRITE OBJECT FILE----------------------------------
-                                try
-                                {
-                                    FileOutputStream Output = new FileOutputStream("Objects.txt");
-                                    ObjectOutputStream out = new ObjectOutputStream(Output);
-                                    out.writeObject(OvenObjects);
-                                    out.close();
-                                    Output.close();
-                                }
-                                catch (Exception e)
-                                {
-                                    System.out.println("WRITE FILE ERROR!!");
-                                }
+                                }                                                                                       //Exodos apo Epilogi
 
-                                OvenObjects[i].PrintOvens();                                                            //Synartisi Ektipwsis
+                                System.out.println("\nOVEN No " + k);                                                   //Metritis entos loopas
+                                NewOven[i].PrintOvens();                                                                //Synartisi Ektipwsis apo dedomena pinaka}
+                                //-----------------------------------WRITE OBJECT FILE----------------------------------
+                                NewOven[i].FileWriteO();                                                                //Synartisi Eggrafis se Arxeio
                             }
                             Oven.Counter();
                             construct = false;                                                                          //Exodos apo Oloklirwsi Constructors
                         }
                     } else if (Device.equals("aircondition")) {
-                        char[] AirConditionARR = new char[0];
+                        String[] AirConditionARR = new String[0];
                         while ((line = br.readLine()) != null) {
                             line = line.toLowerCase();
+                            AirConditionARR = line.split(" ");
                             if (line.contains(Device)) {
                                 String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);
-                                AirConditionARR = line.toCharArray();
-                                System.out.println("The File Contains : " + AirConditionARR[13] + " " + PrintDevice + "s");
+                                System.out.println("The File Contains : " + AirConditionARR[1] + " " + PrintDevice + "s");
                             }
-                        }
-                        int num = Character.getNumericValue(AirConditionARR[13]);                                       //Metatropi Char se Int
-                        AirCondition[] AirConditionObjects;
-                        AirConditionObjects = new AirCondition[num];
 
+                        }
+                        int air = Integer.parseInt(AirConditionARR[1]);
                         boolean construct = true;
                         while (construct)                                                                               //Elegxos Exodou apo epiloges
                         {
                             int k;
-                            for (k = 1; k <= num; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
+                            for (k = 1; k <= air; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
                             {
                                 int i = k - 1;
-                                System.out.println("Build Constructors (1) - Leave Constructor Default (2) - Exit (3):");
+                                System.out.println("\nBuild Constructors (1) - Leave Constructor Default (2) - Exit (3):");
                                 Scanner Constr = new Scanner(System.in);
-                                String ConstructorBuild = Constr.nextLine();
+                                String ConstructorBuild = Constr.next();
+                                AirCondition[] NewAirCondition = new AirCondition[12];
                                 if (ConstructorBuild.equals("1")) {
                                     Scanner Input = new Scanner(System.in);
-                                    AirCondition NewAirCondition = new AirCondition();                                  //Dimiourgia Constructor
-                                    NewAirCondition.NewACConstruct(Input);                                              //Dimiourgia meso synartisis eisodou
-                                    for (int j = 0; j < AirConditionObjects.length; j++) {
-                                        AirConditionObjects[i] = NewAirCondition;                                       //Eisagwgi Stoixeiwn se pinaka
-                                    }
-
+                                    NewAirCondition[i] = new AirCondition();
+                                    NewAirCondition[i].NewACConstruct(Input);
                                 } else if (ConstructorBuild.equals("2")) {
-                                    AirConditionObjects[i] = new AirCondition();                                        //Eisagwgi Stoixeiwn se pinaka
+                                    NewAirCondition[i] = new AirCondition();
                                 } else {
-                                    construct = false;                                                                  //Exodos apo Epilogi
                                     break;
-                                }
+                                }                                                                                       //Exodos apo Epilogi
 
-                                System.out.println("AIRCONDITION No " + k);                                             //Metritis entos loopas
+                                System.out.println("\nAIR CONDITION No " + k);                                          //Metritis entos loopas
+                                NewAirCondition[i].PrintAC();                                                           //Synartisi Ektipwsis apo dedomena pinaka
                                 //-----------------------------------WRITE OBJECT FILE----------------------------------
-                                try{
-                                FileOutputStream Output = new FileOutputStream("Objects.txt");
-                                ObjectOutputStream out = new ObjectOutputStream(Output);
-                                out.writeObject(AirConditionObjects);
-                                    out.close();
-                                    Output.close();
-                                } catch (Exception e)
-                                {
-                                    System.out.println("WRITE FILE ERROR!!");
-                                }
-                                AirConditionObjects[i].PrintAC();                                                       //Synartisi Ektipwsis apo dedomena pinaka
-
+                                NewAirCondition[i].FileWriteAC();                                                       //Synartisi Eggrafis se Arxeio
                             }
                             AirCondition.Counter();
                             construct = false;                                                                          //Exodos apo Oloklirwsi Constructors
                         }
-                    } else if (Device.equals("washinemachine"))
-                    {
-                        char[] WashineMachineARR = new char[0];
+                    } else if (Device.equals("washinemachine")) {
+                        String[] WashineMachineARR = new String[0];
                         while ((line = br.readLine()) != null) {
                             line = line.toLowerCase();
+                            WashineMachineARR = line.split(" ");
                             if (line.contains(Device)) {
                                 String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);
-                                WashineMachineARR = line.toCharArray();
-                                System.out.println("The File Contains : " + WashineMachineARR[15] + " " + PrintDevice + "s");
+                                System.out.println("The File Contains : " + WashineMachineARR[1] + " " + PrintDevice + "s");
+
                             }
+
                         }
-                        int num = Character.getNumericValue(WashineMachineARR[15]);                                     //Metatropi Char se Int
-                        WashineMachine[] WashineMachineObjects;
-                        WashineMachineObjects = new WashineMachine[num];
+                        int was = Integer.parseInt(WashineMachineARR[1]);                                               //Metatropi String se Int
                         boolean construct = true;
                         while (construct)                                                                               //Elegxos Exodou apo epiloges
                         {
                             int k;
-                            for (k = 1; k <= num; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
+                            for (k = 1; k <= was; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
                             {
                                 int i = k - 1;
-                                System.out.println("Build Constructors (1) - Leave Constructor Default (2) - Exit (3):");
+                                System.out.println("\nBuild Constructors (1) - Leave Constructor Default (2) - Exit (3):");
                                 Scanner Constr = new Scanner(System.in);
-                                String ConstructorBuild = Constr.nextLine();
-                                if (ConstructorBuild.equals("1")) {
+                                String ConstructorBuild = Constr.next();
+                                WashineMachine[] NewWashineMachine = new WashineMachine[12];
+                                if (ConstructorBuild.equals("1"))                                                       //Dimiourgia meso synartisis eisodou
+                                {
                                     Scanner Input = new Scanner(System.in);
-                                    WashineMachine NewWashineMachine = new WashineMachine();                            //Dimiourgia Constructor
-                                    NewWashineMachine.NewWashineMachineConstruct(Input);                                //Dimiourgia meso synartisis eisodou
-                                    for (int j = 0; j < WashineMachineObjects.length; j++) {
-                                        WashineMachineObjects[i] = NewWashineMachine;                                   //Eisagwgi Stoixeiwn se pinaka
-                                    }
-                                } else if (ConstructorBuild.equals("2")) {                                               //Dimioyrgia Default Constructor
-                                    WashineMachineObjects[i] = new WashineMachine();                                    //Eisagwgi Stoixeiwn se pinaka
+                                    NewWashineMachine[i] = new WashineMachine();
+                                    NewWashineMachine[i].NewWashineMachineConstruct(Input);
+                                } else if (ConstructorBuild.equals("2"))                                                  //Default Constructor
+                                {
+                                    NewWashineMachine[i] = new WashineMachine();                                        //Eisagwgi Stoixeiwn se pinaka
                                 } else {
-                                    construct = false;
+                                    // construct = false;                                                               //Exodos apo Epilogi
                                     break;
-                                }                                                   //Exodos apo Epilogi
-                                System.out.println("WASHINE MACHINE No " + k);                                          //Metritis entos loopas
-                                try {
-                                    //-----------------------------------WRITE OBJECT FILE----------------------------------
-                                    FileOutputStream Output = new FileOutputStream("Objects.txt");
-                                    ObjectOutputStream out = new ObjectOutputStream(Output);
-                                    out.writeObject(WashineMachineObjects);
-                                    out.close();
-                                    Output.close();
-                                } catch (Exception e) {
-                                    System.out.println("WRITE FILE ERROR!!");
                                 }
-                                WashineMachineObjects[i].PrintWashings();                                               //Synartisi Ektipwsis apo dedomena pinaka}
-                                WashineMachine.Counter();
-                                construct = false;
-                            }//Exodos apo Oloklirwsi Constructors
+
+                                System.out.println("\nWASHINE MACHINE No " + k);                                        //Metritis entos loopas
+                                NewWashineMachine[i].PrintWashings();                                                   //Synartisi Ektipwsis apo dedomena pinaka}
+                                //-----------------------------------WRITE OBJECT FILE----------------------------------
+                                NewWashineMachine[i].FileWriteWM();                                                     //Synartisi Eggrafis se Arxeio
                             }
+                            WashineMachine.Counter();
+                            construct = false;                                                                          //Exodos apo Oloklirwsi Constructors
                         }
-                        else
-                        { System.out.println("Not Found!!!");}                                                          //Stin periptwsi poy auto pou psaxneis den yparxei...mnm lathous
+                    } else {
+                        System.out.println("Not Found!!!");
+                    }                                                                                                   //Stin periptwsi poy auto pou psaxneis den yparxei...mnm lathous
 
 
                     } else {
@@ -376,10 +321,22 @@ public class HomeAppliancesStore {
                     }//Kleisimo arxeioy gia epanalypsi anoigmatos stin arxei stin periptwsi pou theloume nea anazitisi
                 }
             }
-         catch (Exception e)
-         {
-            System.out.println("FATAL ERROR!!");;
-         }
-    }
+            catch (Exception e)
+            { e.printStackTrace(); System.out.println("FATAL ERROR!!");}
+            }
 
-}
+            public static void CreateFile()
+            {
+                try {
+                File myFile = new File("Objects.txt");
+                if (myFile.delete() ) {
+                    myFile.createNewFile();
+                    System.out.println("Success!");
+                } else {
+                    System.out.println("Failure!");
+                }
+            } catch ( IOException ioe ) { ioe.printStackTrace(); }
+            }
+        }
+
+

@@ -1,3 +1,6 @@
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 class Fridge extends Device  implements java.io.Serializable
@@ -15,7 +18,7 @@ class Fridge extends Device  implements java.io.Serializable
     public static int FridgeCounter=0;
 
         // Main Constructor
-        Fridge(int Capasity, String Color,String katapsixti, String Othoni,int Mikos, int Ypsos,int Vathos,String Company,String Modelo, int Price,String Energy_Class)
+        Fridge(String TYPE,int Capasity, String Color,String katapsixti, String Othoni,int Mikos, int Ypsos,int Vathos,String Company,String Modelo, int Price,String Energy_Class)
         {
             super(Mikos,Ypsos,Vathos,Company,Modelo,Price,Energy_Class);
             this.Capasity = Capasity; this.Color = Color; this.katapsixti = katapsixti; this.Othoni = Othoni;
@@ -86,6 +89,27 @@ class Fridge extends Device  implements java.io.Serializable
         System.out.println("Price : "+getPrice()+"Euros");
         System.out.println("\n");
         }
+
+        //Synartisi Ektypwsis Constructors Se ARXEIO
+        public void FileWriteF()
+            {
+                try{
+                    PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("Objects.txt", true)));
+                    writer.print("Device Type : "+TYPE);
+                    writer.print("|| BTU's : " + getCapasity() + "Lt || Color : " + getColor() );
+                    writer.print("|| Frezer : " + getkatapsixti() + " || LCD Screen : " + getOthoni());
+                    writer.print("|| Lenght :  " + getMikos() + "|| Height : " + getYpsos() + "|| Depth : " + getVathos());
+                    writer.print("|| Company : " + getCompany() + "|| Modell : " + getModelo() + "|| Energy Class : " + getEnergeia());
+                    writer.print("|| Price : " + getPrice() + "Euros");
+                    writer.print("\n");
+                    writer.close();
+                    System.out.println("FILE WRITE DONE!!\n");
+
+                }
+                catch (Exception e) {System.out.println("FILE WRITE ERROR!!\n"); }
+            }
+
+
         //Synartisi Ektypwsis Counter
         public static void Counter(){System.out.println("THE FRIDGES ARE : "+Fridge.FridgeCounter);}
 

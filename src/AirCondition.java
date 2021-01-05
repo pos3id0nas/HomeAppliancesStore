@@ -1,3 +1,6 @@
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 class AirCondition extends Device  implements java.io.Serializable
@@ -81,6 +84,28 @@ class AirCondition extends Device  implements java.io.Serializable
         System.out.println("\n");
 
         }
+
+        //Synartisi Ektypwsis Constructors Se ARXEIO
+        public void FileWriteAC()
+        {
+            try{
+                PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("Objects.txt", true)));
+                writer.print("Device Type : "+TYPE);
+                writer.print("|| BTU's : " + getBTU() + "Lt || DBL Noice : : " + getDBL() );
+                writer.print("|| Ionizer : " + getionistis() + " || WIFI : " + getwifi());
+                writer.print("|| Lenght :  " + getMikos() + "|| Height : " + getYpsos() + "|| Depth : " + getVathos());
+                writer.print("|| Company : " + getCompany() + "|| Modell : " + getModelo() + "|| Energy Class : " + getEnergeia());
+                writer.print("|| Price : " + getPrice() + "Euros");
+                writer.print("\n");
+                writer.close();
+                System.out.println("FILE WRITE DONE!!\n");
+
+            }
+            catch (Exception e) {System.out.println("FILE WRITE ERROR!!\n"); }
+        }
+
+
+
         // Synartisi Ektypwsis Counter
         public static void Counter(){System.out.println("THE AIR_CONDITIONS ARE: "+AirCondition.ACounter);}
 
