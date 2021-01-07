@@ -96,7 +96,7 @@ class Fridge extends Device  implements java.io.Serializable
                 try{
                     PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("Objects.txt", true)));
                     writer.print("Device Type : "+TYPE);
-                    writer.print("|| BTU's : " + getCapasity() + "Lt || Color : " + getColor() );
+                    writer.print("|| Capasity : " + getCapasity() + "Lt || Color : " + getColor() );
                     writer.print("|| Frezer : " + getkatapsixti() + " || LCD Screen : " + getOthoni());
                     writer.print("|| Lenght :  " + getMikos() + "|| Height : " + getYpsos() + "|| Depth : " + getVathos());
                     writer.print("|| Company : " + getCompany() + "|| Modell : " + getModelo() + "|| Energy Class : " + getEnergeia());

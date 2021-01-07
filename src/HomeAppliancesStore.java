@@ -131,22 +131,27 @@ public class HomeAppliancesStore {
                     String line;
                     if (Device.equals("fridge"))                                                                        //An i syskeui einai Fridge klp stis paromoies else if
                     {
+                        int num = 0;
                         String[] FridgeARR = new String[0];
                         while ((line = br.readLine()) != null) {
                             line = line.toLowerCase();
                             FridgeARR = line.split(" ");
-
-                            if (line.contains(Device)) {
+                            if (line.contains(Device))
+                            {
                                 String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);
                                 System.out.println("The File Contains : " + FridgeARR[1] + " " + PrintDevice + "s");
+                                int fr = Integer.parseInt(FridgeARR[1]);
+                                num = fr;
                             }
+
+
                         }
-                        int fr = Integer.parseInt(FridgeARR[1]);
                         boolean construct = true;
                         while (construct)                                                                               //Elegxos Exodou apo epiloges
                         {
+
                             int k;
-                                for (k = 1; k <= fr; k++)                                                              //For loop gia epanalipsi oswn Object Grafei to arxeio
+                                for (k = 1; k <= num; k++)                                                              //For loop gia epanalipsi oswn Object Grafei to arxeio
                                 {
                                     int i = k - 1;
                                     System.out.println("\nBuild Constructors (1) - Leave Constructor Default (2) - Exit (3):");
@@ -173,6 +178,7 @@ public class HomeAppliancesStore {
                             }
                         }
                         else if (Device.equals("oven")) {
+                        int num = 0;
                         String[] OvenARR = new String[0];                                                               //Diavazei to arxeio <<Devices>> grammi grammi
                         while ((line = br.readLine()) != null) {                                                        //tis opoies metatrepei oles se mikra se periptwsi pou yparxei kati kefalaio
                             line = line.toLowerCase();                                                                  //Kai Pernaei tin grammi xwrismeni se kena ---> sto antistoixo String Array kathe string
@@ -180,14 +186,16 @@ public class HomeAppliancesStore {
                             if (line.contains(Device)) {                                                                //Kai elegxei An i grammi periexei tin Syskeui pou psaxnoume
                                 String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);
                                 System.out.println("The File Contains : " + OvenARR[1] + " " + PrintDevice + "s");
+                                int ov = Integer.parseInt(OvenARR[1]);
+                                num = ov;
                             }
                         }
-                        int ov = Integer.parseInt(OvenARR[1]);
+
                         boolean construct = true;
                         while (construct)                                                                               //Elegxos Exodou apo epiloges
                         {
                             int k;
-                            for (k = 1; k <= ov; k++)                                                                  //For loop gia epanalipsi oswn Object tha Grafoun sto arxeio
+                            for (k = 1; k <= num; k++)                                                                  //For loop gia epanalipsi oswn Object tha Grafoun sto arxeio
                             {
                                 int i = k - 1;
                                 System.out.println("\nBuild Constructors (1) - Leave Constructor Default (2) - Exit (3):");
@@ -213,6 +221,7 @@ public class HomeAppliancesStore {
                             construct = false;                                                                          //Exodos apo Oloklirwsi Constructors
                         }
                     } else if (Device.equals("aircondition")) {
+                            int num = 0;
                         String[] AirConditionARR = new String[0];
                         while ((line = br.readLine()) != null) {
                             line = line.toLowerCase();
@@ -220,15 +229,17 @@ public class HomeAppliancesStore {
                             if (line.contains(Device)) {
                                 String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);
                                 System.out.println("The File Contains : " + AirConditionARR[1] + " " + PrintDevice + "s");
+                                int air = Integer.parseInt(AirConditionARR[1]);
+                                num = air;
                             }
 
                         }
-                        int air = Integer.parseInt(AirConditionARR[1]);
+
                         boolean construct = true;
                         while (construct)                                                                               //Elegxos Exodou apo epiloges
                         {
                             int k;
-                            for (k = 1; k <= air; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
+                            for (k = 1; k <= num; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
                             {
                                 int i = k - 1;
                                 System.out.println("\nBuild Constructors (1) - Leave Constructor Default (2) - Exit (3):");
@@ -254,6 +265,7 @@ public class HomeAppliancesStore {
                             construct = false;                                                                          //Exodos apo Oloklirwsi Constructors
                         }
                     } else if (Device.equals("washinemachine")) {
+                            int num=0;
                         String[] WashineMachineARR = new String[0];
                         while ((line = br.readLine()) != null) {
                             line = line.toLowerCase();
@@ -261,16 +273,15 @@ public class HomeAppliancesStore {
                             if (line.contains(Device)) {
                                 String PrintDevice = Device.substring(0, 1).toUpperCase() + Device.substring(1);
                                 System.out.println("The File Contains : " + WashineMachineARR[1] + " " + PrintDevice + "s");
-
+                                int was = Integer.parseInt(WashineMachineARR[1]);                                       //Metatropi String se Int
+                                num = was;
                             }
-
                         }
-                        int was = Integer.parseInt(WashineMachineARR[1]);                                               //Metatropi String se Int
                         boolean construct = true;
                         while (construct)                                                                               //Elegxos Exodou apo epiloges
                         {
                             int k;
-                            for (k = 1; k <= was; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
+                            for (k = 1; k <= num; k++)                                                                  //For loop gia epanalipsi oswn Object Grafei to arxeio
                             {
                                 int i = k - 1;
                                 System.out.println("\nBuild Constructors (1) - Leave Constructor Default (2) - Exit (3):");

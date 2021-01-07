@@ -1,0 +1,8 @@
+Device Type : Fridge|| Capasity : 0Lt || Color : null|| Frezer : null || LCD Screen : null|| Lenght :  0|| Height : 0|| Depth : 0|| Company : null|| Modell : null|| Energy Class : null|| Price : 0Euros
+Device Type : Fridge|| Capasity : 0Lt || Color : null|| Frezer : null || LCD Screen : null|| Lenght :  0|| Height : 0|| Depth : 0|| Company : null|| Modell : null|| Energy Class : null|| Price : 0Euros
+Device Type : Fridge|| Capasity : 0Lt || Color : null|| Frezer : null || LCD Screen : null|| Lenght :  0|| Height : 0|| Depth : 0|| Company : null|| Modell : null|| Energy Class : null|| Price : 0Euros
+Device Type : Fridge|| Capasity : 0Lt || Color : null|| Frezer : null || LCD Screen : null|| Lenght :  0|| Height : 0|| Depth : 0|| Company : null|| Modell : null|| Energy Class : null|| Price : 0Euros
+Device Type : Fridge|| Capasity : 0Lt || Color : null|| Frezer : null || LCD Screen : null|| Lenght :  0|| Height : 0|| Depth : 0|| Company : null|| Modell : null|| Energy Class : null|| Price : 0Euros
+Device Type : Fridge|| Capasity : 0Lt || Color : null|| Frezer : null || LCD Screen : null|| Lenght :  0|| Height : 0|| Depth : 0|| Company : null|| Modell : null|| Energy Class : null|| Price : 0Euros
+Device Type : Fridge|| Capasity : 0Lt || Color : null|| Frezer : null || LCD Screen : null|| Lenght :  0|| Height : 0|| Depth : 0|| Company : null|| Modell : null|| Energy Class : null|| Price : 0Euros
+Device Type : Fridge|| Capasity : 0Lt || Color : null|| Frezer : null || LCD Screen : null|| Lenght :  0|| Height : 0|| Depth : 0|| Company : null|| Modell : null|| Energy Class : null|| Price : 0Euros
